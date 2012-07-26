@@ -1,0 +1,59 @@
+@-moz-document url(chrome://mozapps/content/extensions/extensions.xul), url(about:addons) {
+
+#header {
+  margin-bottom: 7px !important;
+  margin-top: -10px !important;
+}
+
+#view-port-container {margin-bottom: -10px !important;}
+
+#list-view .global-warning-container, #list-view .addon > .warning {display: none !important;}
+#list-view .global-warning-container {display: none !important;}
+#list-view .addon .content-inner-container {-moz-box-orient: horizontal !important;}
+#list-view .addon :-moz-any(.name-container, .name) {font-size: 14px !important;}
+#list-view .addon.addon-view {padding: 3px 4px 3px 0 !important;}
+#list-view .addon.addon-view[active="true"]:not([selected]) .description {opacity: 0.5 !important;}
+#list-view .addon.addon-view .description-outer-container {overflow: hidden !important;}
+
+#list-view .addon.addon-view * {
+  -moz-box-align: center !important;
+  vertical-align: middle !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  margin-right: 0 !important;
+  white-space: nowrap !important;
+}
+
+#list-view .addon .icon-container,
+#list-view .addon .icon {
+  width: 20px !important;
+  height: 20px !important;
+  padding: 0 !important;
+}
+
+/* Display enabled/disabled counts. Thanks to K.WeEabo0o */
+.addon:first-child {
+  counter-reset: enabled;
+  counter-reset: disabled;
+}
+
+.addon[active="true"] {counter-increment: enabled;}
+.addon[active="false"] {counter-increment: disabled;}
+
+#addon-list:after {
+  content: "("counter(enabled)" enabled, "counter(disabled)" disabled)" !important;
+  position: fixed;
+  top: 11px;
+}
+
+#addons-page * {
+  border-radius: 0 !important;
+}
+}
+
+/* Code adopted from "Fix Add-ons Manager lags when scrolling" by Drugoy */
+@-moz-document url-prefix(https://services.addons.mozilla.org){
+body * {
+  border-radius: 0 !important;
+}
+}
