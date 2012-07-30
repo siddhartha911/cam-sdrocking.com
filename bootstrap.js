@@ -9,15 +9,19 @@ function getURIForFile(filepath) {
 }
 
 function startup(data, reason) {
-  sss.loadAndRegisterSheet(getURIForFile(FILENAME), sss.USER_SHEET);
+  var uri = getURIForFile(FILENAME);
+  if(!sss.sheetRegistered(uri, sss.USER_SHEET)) {
+    sss.loadAndRegisterSheet(uri, sss.USER_SHEET);
+  }
 }
 
 function shutdown(data, reason) {
   if(reason == APP_SHUTDOWN)  return;
 
   var uri = getURIForFile(FILENAME);
-  if(sss.sheetRegistered(uri, sss.USER_SHEET))
+  if(sss.sheetRegistered(uri, sss.USER_SHEET)) {
     sss.unregisterSheet(uri, sss.USER_SHEET);
+  }
 }
 
 function install() {}

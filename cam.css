@@ -1,8 +1,8 @@
 @-moz-document url(chrome://mozapps/content/extensions/extensions.xul), url(about:addons) {
 
 #header {
-  margin-bottom: 7px !important;
-  margin-top: -10px !important;
+	margin-bottom: 7px !important;
+	margin-top: -10px !important;
 }
 
 #view-port-container {margin-bottom: -10px !important;}
@@ -16,34 +16,56 @@
 #list-view .addon.addon-view .description-outer-container {overflow: hidden !important;}
 
 #list-view .addon.addon-view * {
-  -moz-box-align: center !important;
-  vertical-align: middle !important;
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-  margin-right: 0 !important;
-  white-space: nowrap !important;
+	-moz-box-align: center !important;
+	vertical-align: middle !important;
+	margin-top: 0 !important;
+	margin-bottom: 0 !important;
+	margin-right: 0 !important;
+	white-space: nowrap !important;
 }
 
 #list-view .addon .icon-container,
 #list-view .addon .icon {
-  width: 20px !important;
-  height: 20px !important;
-  padding: 0 !important;
+	width: 20px !important;
+	height: 20px !important;
+	padding: 0 !important;
 }
 
-/* Display enabled/disabled counts. Thanks to K.WeEabo0o */
-.addon:first-child {
-  counter-reset: enabled;
-  counter-reset: disabled;
+@media all and (min-width: 600px) {
+	/* Display enabled/disabled counts. Thanks to K.WeEabo0o */
+	#addon-list .addon:first-child {
+		counter-reset: enabled;
+		counter-reset: disabled;
+	}
+	
+	#addon-list .addon[active="true"] {counter-increment: enabled;}
+	#addon-list .addon[active="false"] {counter-increment: disabled;}
+	
+	#addon-list:after {
+		content: "("counter(enabled)" enabled, "counter(disabled)" disabled)" !important;
+		position: fixed;
+		top: 11px;
+	}
 }
 
-.addon[active="true"] {counter-increment: enabled;}
-.addon[active="false"] {counter-increment: disabled;}
+/* Adapted from "http://userstyles.org/styles/67076/firefox-addons-manager-table-layout" by bernstein */
+@media all and (min-width: 900px) {
+	/* set proper column widths */
+	#list-view:not([type="userstyle"]) #addon-list .content-inner-container {
+		display: inline-table !important;
+ 		width: 100% !important;
+	}
+	#list-view:not([type="userstyle"]) #addon-list .basicinfo-container {
+		min-width: 300px !important;
+		width: 50% !important;
+	}
+	#list-view:not([type="userstyle"]) #addon-list .advancedinfo-container {
+		width: 50% !important;
+	}
 
-#addon-list:after {
-  content: "("counter(enabled)" enabled, "counter(disabled)" disabled)" !important;
-  position: fixed;
-  top: 11px;
+	/* show update date */
+	#list-view:not([type="userstyle"]) #addon-list .date-updated {display: block !important;}
+	#list-view:not([type="userstyle"]) #addon-list .addon.addon-view[active="true"]:not([selected]) .date-updated {opacity: .5 !important;}
 }
 
 #addons-page * {
@@ -51,9 +73,9 @@
 }
 }
 
-/* Code adopted from "Fix Add-ons Manager lags when scrolling" by Drugoy */
+/* Adapted from "Fix Add-ons Manager lags when scrolling" by Drugoy */
 @-moz-document url-prefix(https://services.addons.mozilla.org){
-body * {
-  border-radius: 0 !important;
-}
+	body * {
+		border-radius: 0 !important;
+	}
 }
