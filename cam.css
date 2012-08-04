@@ -10,7 +10,7 @@
 #list-view .global-warning-container, #list-view .addon > .warning {display: none !important;}
 #list-view .global-warning-container {display: none !important;}
 #list-view .addon .content-inner-container {-moz-box-orient: horizontal !important;}
-#list-view .addon :-moz-any(.name-container, .name) {font-size: 14px !important;}
+#list-view .addon .name-container * {font-size: 14px !important;}
 #list-view .addon.addon-view {padding: 3px 4px 3px 0 !important;}
 #list-view .addon.addon-view[active="true"]:not([selected]) .description {opacity: 0.5 !important;}
 #list-view .addon.addon-view .description-outer-container {overflow: hidden !important;}
@@ -37,10 +37,10 @@
 		counter-reset: enabled;
 		counter-reset: disabled;
 	}
-	
+
 	#addon-list .addon[active="true"] {counter-increment: enabled;}
 	#addon-list .addon[active="false"] {counter-increment: disabled;}
-	
+
 	#addon-list:after {
 		content: "("counter(enabled)" enabled, "counter(disabled)" disabled)" !important;
 		position: fixed;
@@ -51,25 +51,43 @@
 /* Adapted from "http://userstyles.org/styles/67076/firefox-addons-manager-table-layout" by bernstein */
 @media all and (min-width: 900px) {
 	/* set proper column widths */
-	#list-view:not([type="userstyle"]) #addon-list .content-inner-container {
+	#list-view:not([type="userstyle"]):not([type="userscript"]) #addon-list .content-inner-container {
 		display: inline-table !important;
- 		width: 100% !important;
+		width: 100% !important;
 	}
-	#list-view:not([type="userstyle"]) #addon-list .basicinfo-container {
+	#list-view:not([type="userstyle"]):not([type="userscript"]) #addon-list .basicinfo-container {
 		min-width: 300px !important;
 		width: 50% !important;
 	}
-	#list-view:not([type="userstyle"]) #addon-list .advancedinfo-container {
+	#list-view:not([type="userstyle"]):not([type="userscript"]) #addon-list .advancedinfo-container {
 		width: 50% !important;
 	}
 
 	/* show update date */
-	#list-view:not([type="userstyle"]) #addon-list .date-updated {display: block !important;}
-	#list-view:not([type="userstyle"]) #addon-list .addon.addon-view[active="true"]:not([selected]) .date-updated {opacity: .5 !important;}
+	#list-view:not([type="userstyle"]):not([type="userscript"]) #addon-list .date-updated {display: block !important;}
+	#list-view:not([type="userstyle"]):not([type="userscript"]) #addon-list .addon.addon-view[active="true"]:not([selected]) .date-updated {opacity: .5 !important;}
 }
 
 #addons-page * {
-  border-radius: 0 !important;
+	border-radius: 0 !important;
+}
+
+/* increase font and icon sizes on large displays */
+@media all and (min-width: 1100px) and (min-height: 700px) {
+	#list-view .addon .name-container * {
+		font-size: 16px !important;
+		font-weight: 600 !important;
+	}
+	#list-view .addon .description-outer-container *, .date-updated {font-size: 14px !important;}
+	#list-view .addon.addon-view {
+		padding-top: 4px !important;
+		padding-bottom: 4px !important;
+	}
+	#list-view .addon .icon-container,
+	#list-view .addon .icon {
+		width: 24px !important;
+		height: 24px !important;
+	}
 }
 }
 
