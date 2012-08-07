@@ -1,21 +1,15 @@
 @-moz-document url(chrome://mozapps/content/extensions/extensions.xul), url(about:addons) {
 
-#header {
-	margin-bottom: 7px !important;
-	margin-top: -10px !important;
-}
+#addons-page {padding: 10px !important;}
+#header {margin-bottom: 10px !important;}
 
-#view-port-container {margin-bottom: -10px !important;}
-
-#list-view .global-warning-container, #list-view .addon > .warning {display: none !important;}
-#list-view .global-warning-container {display: none !important;}
 #list-view .addon .content-inner-container {-moz-box-orient: horizontal !important;}
+#list-view .addon .description-outer-container {overflow-x: hidden !important;}
+#list-view .addon-view {padding: 3px 4px 3px 0 !important;}
 #list-view .addon .name-container * {font-size: 14px !important;}
-#list-view .addon.addon-view {padding: 3px 4px 3px 0 !important;}
-#list-view .addon.addon-view[active="true"]:not([selected]) .description {opacity: 0.5 !important;}
-#list-view .addon.addon-view .description-outer-container {overflow: hidden !important;}
+#list-view .addon[active="true"]:not([selected]) .description {opacity: 0.5 !important;}
 
-#list-view .addon.addon-view * {
+#list-view .addon-view * {
 	-moz-box-align: center !important;
 	vertical-align: middle !important;
 	margin-top: 0 !important;
@@ -24,11 +18,13 @@
 	white-space: nowrap !important;
 }
 
-#list-view .addon .icon-container,
-#list-view .addon .icon {
+#list-view .addon .icon-container {
 	width: 20px !important;
 	height: 20px !important;
-	padding: 0 !important;
+}
+#list-view .addon .icon {
+	width: inherit !important;
+	height: inherit !important;
 }
 
 @media all and (min-width: 600px) {
@@ -44,7 +40,7 @@
 	#addon-list:after {
 		content: "("counter(enabled)" enabled, "counter(disabled)" disabled)" !important;
 		position: fixed;
-		top: 11px;
+		top: 14px;
 	}
 }
 
@@ -65,11 +61,7 @@
 
 	/* show update date */
 	#list-view:not([type="userstyle"]):not([type="userscript"]) #addon-list .date-updated {display: block !important;}
-	#list-view:not([type="userstyle"]):not([type="userscript"]) #addon-list .addon.addon-view[active="true"]:not([selected]) .date-updated {opacity: .5 !important;}
-}
-
-#addons-page * {
-	border-radius: 0 !important;
+	#list-view:not([type="userstyle"]):not([type="userscript"]) #addon-list .addon-view[active="true"]:not([selected]) .date-updated {opacity: .5 !important;}
 }
 
 /* increase font and icon sizes on large displays */
@@ -78,16 +70,18 @@
 		font-size: 16px !important;
 		font-weight: 600 !important;
 	}
-	#list-view .addon .description-outer-container *, .date-updated {font-size: 14px !important;}
-	#list-view .addon.addon-view {
-		padding-top: 4px !important;
-		padding-bottom: 4px !important;
+	#list-view .addon .description-outer-container *,
+	#list-view .addon .basicinfo-container .date-updated {
+		font-size: 14px !important;
 	}
-	#list-view .addon .icon-container,
-	#list-view .addon .icon {
-		width: 24px !important;
-		height: 24px !important;
+	#list-view .addon .icon-container {
+		width: 23px !important;
+		height: 23px !important;
 	}
+}
+
+#addons-page * {
+	border-radius: 0 !important;
 }
 }
 
