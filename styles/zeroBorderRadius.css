@@ -1,0 +1,12 @@
+/* Adapted from "Fix Add-ons Manager lags when scrolling" by Drugoy */
+@-moz-document url(chrome://mozapps/content/extensions/extensions.xul), url(about:addons) {
+	#addons-page * {
+		border-radius: 0 !important;
+	}
+}
+
+@-moz-document url-prefix(https://services.addons.mozilla.org){
+	body * {
+		border-radius: 0 !important;
+	}
+}

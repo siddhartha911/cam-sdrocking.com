@@ -1,0 +1,45 @@
+/* Adapted from "http://userstyles.org/styles/67076/firefox-addons-manager-table-layout" by bernstein */
+@-moz-document url(chrome://mozapps/content/extensions/extensions.xul), url(about:addons) {
+	#list-view .addon-view {padding: 3px 4px 3px 0 !important;}
+	#list-view .addon .name-container * {font-size: 14px !important;}
+
+	#list-view .addon .icon-container {
+		width: 20px !important;
+		height: 20px !important;
+	}
+
+	@media all and (min-width: 900px) {
+		/* Align columns neatly */
+		#list-view:not([type="userstyle"]):not([type="userscript"]) #addon-list .content-inner-container {
+			display: inline-table !important;
+			width: 100% !important;
+		}
+		#list-view:not([type="userstyle"]):not([type="userscript"]) #addon-list .basicinfo-container {
+			min-width: 300px !important;
+			width: 50% !important;
+		}
+		#list-view:not([type="userstyle"]):not([type="userscript"]) #addon-list .advancedinfo-container {
+			width: 50% !important;
+		}
+	
+		/* Show update date */
+		#list-view:not([type="userstyle"]):not([type="userscript"]) #addon-list .date-updated {display: block !important;}
+		#list-view:not([type="userstyle"]):not([type="userscript"]) #addon-list .addon-view[active="true"]:not([selected]) .date-updated {opacity: .5 !important;}
+	}
+	
+	/* Increase font and icon sizes on large displays */
+	@media all and (min-width: 1100px) and (min-height: 700px) {
+		#list-view .addon .name-container * {
+			font-size: 16px !important;
+			font-weight: 600 !important;
+		}
+		#list-view .addon .description-outer-container *,
+		#list-view .addon .basicinfo-container .date-updated {
+			font-size: 14px !important;
+		}
+		#list-view .addon .icon-container {
+			width: 23px !important;
+			height: 23px !important;
+		}
+	}
+}

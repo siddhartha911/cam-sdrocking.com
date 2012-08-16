@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<box xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<setting pref="extensions.cam.camStyling" title="Pick a style for the addon-list"
+		type="radio">
+		<radiogroup>
+			<radio value="camAdaptive" label="Adaptive" />
+			<radio value="camClassic" label="Classic" />
+			<radio value="camMinimal" label="Minimal" />
+		</radiogroup>
+		Allow CAM to dynamically "Adapt" to window size
+	</setting>
+
+	<setting pref="extensions.cam.useZeroBorderRadius" type="bool"
+		title="Set border radius to 0 (zero)">
+		Makes scroll animations smoother
+	</setting>
+
+	<setting pref="extensions.cam.showAddonCounts" type="bool"
+		title="Show counts of enabled/disabled addons">
+		Shows counts on top of the addon-list
+	</setting>
+
+</box>

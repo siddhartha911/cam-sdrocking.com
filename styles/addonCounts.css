@@ -1,0 +1,18 @@
+/* Displays enabled/disabled counts. Thanks to K.WeEabo0o */
+@-moz-document url(chrome://mozapps/content/extensions/extensions.xul), url(about:addons) {
+	@media all and (min-width: 600px) {
+		#list-view #addon-list .addon:first-child {
+			counter-reset: enabled;
+			counter-reset: disabled;
+		}
+	
+		#list-view #addon-list .addon[active="true"] {counter-increment: enabled;}
+		#list-view #addon-list .addon[active="false"] {counter-increment: disabled;}
+	
+		#list-view #addon-list:after {
+			content: "("counter(enabled)" enabled, "counter(disabled)" disabled)" !important;
+			position: fixed;
+			top: 14px;
+		}
+	}
+}
