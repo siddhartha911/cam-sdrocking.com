@@ -1,24 +1,29 @@
 <?xml version="1.0"?>
 <box xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 
-	<setting pref="extensions.cam.camStyling" title="Pick a style for the addon-list"
-		type="radio">
+	<setting pref="extensions.cam.camStyling" type="radio"
+		title="Pick a style for the addon-list">
 		<radiogroup>
 			<radio value="camAdaptive" label="Adaptive" />
 			<radio value="camClassic" label="Classic" />
 			<radio value="camMinimal" label="Minimal" />
 		</radiogroup>
-		Allow CAM to dynamically "Adapt" to window size
+		Use an Adaptive layout, or the classic CAM style, or a minimal style
 	</setting>
 
 	<setting pref="extensions.cam.useZeroBorderRadius" type="bool"
-		title="Set border radius to 0 (zero)">
+		title="Use 0 (zero) border radius everywhere">
 		Makes scroll animations smoother
 	</setting>
 
 	<setting pref="extensions.cam.showAddonCounts" type="bool"
 		title="Show counts of enabled/disabled addons">
 		Shows counts on top of the addon-list
+	</setting>
+
+	<setting pref="extensions.cam.adaptiveCategorySize" type="bool"
+		title="Adapt size of Categories column on the left">
+		Size of Category tabs will change with window size
 	</setting>
 
 </box>

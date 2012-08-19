@@ -7,7 +7,7 @@
 		<description>Cleanup your Addon Manager.</description>
 		<homepageURL>https://addons.mozilla.org/en-US/firefox/addon/cam/
 		</homepageURL>
-		<version>5.0</version>
+		<version>6.0</version>
 
 		<bootstrap>true</bootstrap>
 		<type>2</type>

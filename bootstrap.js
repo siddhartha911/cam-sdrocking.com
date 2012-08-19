@@ -7,6 +7,7 @@ var PREF_DEFAULTS = {
 	camStyling : "camAdaptive",
 	useZeroBorderRadius : true,
 	showAddonCounts : true,
+	adaptiveCategorySize : true,
 	loggingEnabled : false
 };
 
@@ -27,20 +28,29 @@ initDefaultPrefs(PREF_ROOT, PREF_DEFAULTS, true);
 var currentStyling;
 
 function loadAndObserveCAMStyling(prefName) {
-	loadSheet(currentStyling);
+	if (currentStyling.indexOf("none") === -1) {
+		loadSheet(currentStyling);
+	}
 
 	prefObserve([ prefName ], function() {
 		var newStyling = "styles/" + prefValue(prefName) + ".css";
 
 		if (newStyling != currentStyling) {
-			loadSheet(newStyling);
-			unloadSheet(currentStyling);
+			if (newStyling.indexOf("none") === -1) {
+				loadSheet(newStyling);
+			}
+
+			if (currentStyling.indexOf("none") === -1) {
+				unloadSheet(currentStyling);
+			}
 			currentStyling = newStyling;
 		}
 	});
 
 	unload(function() {
-		unloadSheet(currentStyling);
+		if (currentStyling.indexOf("none") === -1) {
+			unloadSheet(currentStyling);
+		}
 	});
 }
 
@@ -49,6 +59,7 @@ function startup(data, reason) {
 	printToLog("startup(camStyling = " + prefValue("camStyling")
 			+ ", useZeroBorderRadius = " + prefValue("useZeroBorderRadius")
 			+ ", showAddonCounts = " + prefValue("showAddonCounts")
+			+ ", adaptiveCategorySize = " + prefValue("adaptiveCategorySize")
 			+ ", loggingEnabled = " + prefValue("loggingEnabled") + ")");
 
 	loadSheet("styles/commons.css");
@@ -61,6 +72,7 @@ function startup(data, reason) {
 
 	loadAndObserve("useZeroBorderRadius", "styles/zeroBorderRadius.css");
 	loadAndObserve("showAddonCounts", "styles/addonCounts.css");
+	loadAndObserve("adaptiveCategorySize", "styles/adaptiveCategorySize.css");
 }
 
 function shutdown(data, reason) {
