@@ -1,14 +1,6 @@
 @-moz-document url(chrome://mozapps/content/extensions/extensions.xul), url(about:addons) {
-	#list-view .addon-view {padding: 3px 4px 3px 0 !important;}
-	#list-view .addon .name-container * {font-size: 14px !important;}
-
-	#list-view .addon .icon-container {
-		width: 20px !important;
-		height: 20px !important;
-	}
-
 	#addon-list .addon-view .date-updated,
 	#addon-list .addon-view .description-container {
-  		visibility: collapse !important;
+		visibility: collapse !important;
 	}
 }

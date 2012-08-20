@@ -6,24 +6,29 @@
 		<radiogroup>
 			<radio value="camAdaptive" label="Adaptive" />
 			<radio value="camClassic" label="Classic" />
+			<radio value="minimalAdaptive" label="Minimal Adaptive" />
 			<radio value="camMinimal" label="Minimal" />
 		</radiogroup>
-		Use an Adaptive layout, or the classic CAM style, or a minimal style
 	</setting>
 
 	<setting pref="extensions.cam.useZeroBorderRadius" type="bool"
 		title="Use 0 (zero) border radius everywhere">
-		Makes scroll animations smoother
+		Use this to make scroll animations smoother
 	</setting>
 
 	<setting pref="extensions.cam.showAddonCounts" type="bool"
 		title="Show counts of enabled/disabled addons">
-		Shows counts on top of the addon-list
+		Counts will appear above the add-on list
 	</setting>
 
-	<setting pref="extensions.cam.adaptiveCategorySize" type="bool"
-		title="Adapt size of Categories column on the left">
-		Size of Category tabs will change with window size
+	<setting pref="extensions.cam.showDateUpdated" type="bool"
+		title="Show last updated date column for addons">
+		Visible in wide windows on Adaptive and Classic layouts
+	</setting>
+
+	<setting pref="extensions.cam.useAdaptiveCategorySize" type="bool"
+		title="Use adaptive size for Category tabs on the left">
+		Size of Categories column changes with window size
 	</setting>
 
 </box>

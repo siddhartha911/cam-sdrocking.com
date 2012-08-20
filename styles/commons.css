@@ -1,11 +1,11 @@
 @-moz-document url(chrome://mozapps/content/extensions/extensions.xul), url(about:addons) {
 	#addons-page {padding: 10px !important;}
 	#header {margin-bottom: 10px !important;}
-	
+
 	#list-view .addon .content-inner-container {-moz-box-orient: horizontal !important;}
 	#list-view .addon .description-outer-container {overflow-x: hidden !important;}
 	#list-view .addon[active="true"]:not([selected]) .description {opacity: 0.5 !important;}
-	
+
 	#list-view .addon-view * {
 		-moz-box-align: center !important;
 		vertical-align: middle !important;
@@ -19,4 +19,7 @@
 		width: inherit !important;
 		height: inherit !important;
 	}
+
+	#list-view .addon {border-top-width: 1px !important;}
+	#list-view .addon[selected="true"] {-moz-border-bottom-colors: rgba(0, 0, 0, .1) !important;}
 }

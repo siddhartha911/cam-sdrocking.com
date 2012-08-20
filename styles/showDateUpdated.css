@@ -1,0 +1,21 @@
+@-moz-document url(chrome://mozapps/content/extensions/extensions.xul), url(about:addons) {
+	/* Adapted from "http://userstyles.org/styles/67076/firefox-addons-manager-table-layout" by bernstein */
+	@media all and (min-width: 900px) {
+		/* Align columns neatly */
+		#list-view:not([type="userstyle"]):not([type="userscript"]) #addon-list .content-inner-container {
+			display: inline-table !important;
+			width: 100% !important;
+		}
+		#list-view:not([type="userstyle"]):not([type="userscript"]) #addon-list .basicinfo-container {
+			min-width: 300px !important;
+			width: 50% !important;
+		}
+		#list-view:not([type="userstyle"]):not([type="userscript"]) #addon-list .advancedinfo-container {
+			width: 50% !important;
+		}
+	
+		/* Show update date */
+		#list-view:not([type="userstyle"]):not([type="userscript"]) #addon-list .date-updated {display: -moz-box !important;}
+		#list-view:not([type="userstyle"]):not([type="userscript"]) #addon-list .addon-view[active="true"]:not([selected]) .date-updated {opacity: .5 !important;}
+	}
+}

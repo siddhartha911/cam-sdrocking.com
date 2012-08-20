@@ -7,28 +7,8 @@
 		height: 20px !important;
 	}
 	
-	#list-view .addon-view {transition: padding .4s ease !important;}
+	#list-view .addon-view {transition: padding .2s ease !important;}
 
-	/* Adapted from "http://userstyles.org/styles/67076/firefox-addons-manager-table-layout" by bernstein */
-	@media all and (min-width: 900px) {
-		/* Align columns neatly */
-		#list-view:not([type="userstyle"]):not([type="userscript"]) #addon-list .content-inner-container {
-			display: inline-table !important;
-			width: 100% !important;
-		}
-		#list-view:not([type="userstyle"]):not([type="userscript"]) #addon-list .basicinfo-container {
-			min-width: 300px !important;
-			width: 50% !important;
-		}
-		#list-view:not([type="userstyle"]):not([type="userscript"]) #addon-list .advancedinfo-container {
-			width: 50% !important;
-		}
-	
-		/* Show update date */
-		#list-view:not([type="userstyle"]):not([type="userscript"]) #addon-list .date-updated {display: -moz-box !important;}
-		#list-view:not([type="userstyle"]):not([type="userscript"]) #addon-list .addon-view[active="true"]:not([selected]) .date-updated {opacity: .5 !important;}
-	}
-	
 	/* Increase font and icon sizes on large displays */
 	@media all and (min-width: 1100px) and (min-height: 700px) {
 		#list-view .addon .name-container * {
@@ -39,6 +19,7 @@
 		#list-view .addon .basicinfo-container .date-updated {
 			font-size: 14px !important;
 		}
+
 		#list-view .addon .icon-container {
 			width: 23px !important;
 			height: 23px !important;
@@ -46,7 +27,7 @@
 	}
 
 	/* Decrease font and icon sizes when window size is small */
-	@media all and (max-height: 450px), (max-width: 550px) {
+	@media all and (max-height: 350px), (max-width: 550px) {
 		#list-view .addon .name-container * {font-size: 11px !important;}
 		#list-view .addon .basicinfo-container .date-updated,
 		#list-view .addon .advancedinfo-container {
@@ -65,10 +46,10 @@
 	@media all and (max-width: 550px) {
 		#list-view .addon-view {padding-right: 1px !important;}
 		#list-view .addon .addon-control {min-width: 4em !important;}
-		#list-view .addon .description-container {opacity: 0.8 !important;}
+		#list-view .addon .description-container {opacity: .8 !important;}
 	}
 
-	@media all and (max-height: 450px) {
+	@media all and (max-height: 350px) {
 		#list-view .addon-view {
 		  padding-top: 1px !important;
 		  padding-bottom: 1px !important;
@@ -76,10 +57,10 @@
 		#list-view .addon .addon-control .button-text {margin: -1px !important;}
 	}
 
-	@media all and (max-height: 450px) and (max-width: 899px) {
-		#list-view .addon .description-container {opacity: 0.8 !important;}
+	@media all and (max-height: 350px) and (max-width: 899px) {
+		#list-view .addon .description-container {opacity: .8 !important;}
 	}
 
-	@media all and (max-height: 450px) and (max-width: 550px) {
+	@media all and (max-height: 350px) and (max-width: 550px) {
 	}
 }

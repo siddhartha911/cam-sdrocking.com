@@ -5,11 +5,14 @@ Cu.import("resource://gre/modules/AddonManager.jsm");
 var PREF_ROOT = "extensions.cam.";
 var PREF_DEFAULTS = {
 	camStyling : "camAdaptive",
-	useZeroBorderRadius : true,
 	showAddonCounts : true,
-	adaptiveCategorySize : true,
+	showDateUpdated : true,
+	useAdaptiveCategorySize : true,
+	useZeroBorderRadius : true,
 	loggingEnabled : false
 };
+
+var CLASSIC_URL = "styles/camClassic.css", ADAPTIVE_URL = "styles/camAdaptive.css", MINIMAL_URL = "styles/camMinimal.css";
 
 function include(src) {
 	var o = {};
@@ -25,54 +28,64 @@ include("scripts/helpers.js");
 
 initDefaultPrefs(PREF_ROOT, PREF_DEFAULTS, true);
 
-var currentStyling;
+var currentAdaptive, currentMinimal;
 
 function loadAndObserveCAMStyling(prefName) {
-	if (currentStyling.indexOf("none") === -1) {
-		loadSheet(currentStyling);
-	}
+	loadSheet(currentAdaptive ? ADAPTIVE_URL : CLASSIC_URL);
+	loadSheet(currentMinimal ? MINIMAL_URL : null);
 
 	prefObserve([ prefName ], function() {
-		var newStyling = "styles/" + prefValue(prefName) + ".css";
+		var newStyling = prefValue(prefName).toLowerCase();
+		newAdaptive = newStyling.indexOf("adaptive") !== -1;
+		newMinimal = newStyling.indexOf("minimal") !== -1;
 
-		if (newStyling != currentStyling) {
-			if (newStyling.indexOf("none") === -1) {
-				loadSheet(newStyling);
+		if (newAdaptive != currentAdaptive) {
+			loadSheet(newAdaptive ? ADAPTIVE_URL : CLASSIC_URL);
+			unloadSheet(currentAdaptive ? ADAPTIVE_URL : CLASSIC_URL);
+			currentAdaptive = newAdaptive;
+		}
+
+		if (newMinimal != currentMinimal) {
+			if (newMinimal) {
+				loadSheet(MINIMAL_URL);
+			} else {
+				unloadSheet(MINIMAL_URL);
 			}
 
-			if (currentStyling.indexOf("none") === -1) {
-				unloadSheet(currentStyling);
-			}
-			currentStyling = newStyling;
+			currentMinimal = newMinimal;
 		}
 	});
 
 	unload(function() {
-		if (currentStyling.indexOf("none") === -1) {
-			unloadSheet(currentStyling);
-		}
+		unloadSheet(currentAdaptive ? ADAPTIVE_URL : CLASSIC_URL);
+		unloadSheet(currentMinimal ? MINIMAL_URL : null);
 	});
 }
 
 function startup(data, reason) {
 	initAddonNameAsync(data);
 	printToLog("startup(camStyling = " + prefValue("camStyling")
-			+ ", useZeroBorderRadius = " + prefValue("useZeroBorderRadius")
 			+ ", showAddonCounts = " + prefValue("showAddonCounts")
-			+ ", adaptiveCategorySize = " + prefValue("adaptiveCategorySize")
-			+ ", loggingEnabled = " + prefValue("loggingEnabled") + ")");
+			+ ", showDateUpdated = " + prefValue("showDateUpdated")
+			+ ", useAdaptiveCategorySize = "
+			+ prefValue("useAdaptiveCategorySize") + ", useZeroBorderRadius = "
+			+ prefValue("useZeroBorderRadius") + ", loggingEnabled = "
+			+ prefValue("loggingEnabled") + ")");
 
 	loadSheet("styles/commons.css");
 	unload(function() {
 		unloadSheet("styles/commons.css");
 	});
 
-	currentStyling = "styles/" + prefValue("camStyling") + ".css";
-	loadAndObserveCAMStyling("camStyling");
-
+	loadAndObserve("showAddonCounts", "styles/showAddonCounts.css");
+	loadAndObserve("showDateUpdated", "styles/showDateUpdated.css");
+	loadAndObserve("useAdaptiveCategorySize", "styles/adaptiveCategorySize.css");
 	loadAndObserve("useZeroBorderRadius", "styles/zeroBorderRadius.css");
-	loadAndObserve("showAddonCounts", "styles/addonCounts.css");
-	loadAndObserve("adaptiveCategorySize", "styles/adaptiveCategorySize.css");
+
+	var currentStyling = prefValue("camStyling").toLowerCase();
+	currentAdaptive = currentStyling.indexOf("adaptive") !== -1;
+	currentMinimal = currentStyling.indexOf("minimal") !== -1;
+	loadAndObserveCAMStyling("camStyling");
 }
 
 function shutdown(data, reason) {

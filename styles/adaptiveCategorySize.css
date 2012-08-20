@@ -1,19 +1,19 @@
 @-moz-document url("about:addons"),url("chrome://mozapps/content/extensions/extensions.xul") {
-  #categories .category:not([disabled]) {transition-duration: .1s !important;}
+	#categories .category:not([disabled]) {transition-duration: .2s !important;}
 
-  @media all and (max-height: 450px) {
-    #addons-page #categories {
-      margin-top: 0 !important;
-      margin-left: 0 !important;
-    }
+	@media all and (max-height: 500px) {
+		#addons-page #categories {
+			margin-top: 0 !important;
+			margin-left: 0 !important;
+		}
 
-    #categories .category {padding: 1px 6px !important;}
-    #categories .category:not([disabled]) {height: 36px !important;}
+		#categories .category {padding: 1px 6px !important;}
+		#categories .category:not([disabled]) {height: 36px !important;}
 
-    #categories .category-icon {
-      height: 24px !important;
-      width: 24px !important;
-      margin: 0 !important;
-    }
-  }
+		#categories .category-icon {
+			height: 24px !important;
+			width: 24px !important;
+			margin: 0 !important;
+		}
+	}
 }
