@@ -15,7 +15,7 @@
 		}
 	
 		/* Show update date */
-		#list-view:not([type="userstyle"]):not([type="userscript"]) #addon-list .date-updated {display: -moz-box !important;}
+		#list-view:not([type="userstyle"]):not([type="userscript"]) #addon-list .addon-view:not([value$="@personas.mozilla.org"]) .date-updated {display: -moz-box !important;}
 		#list-view:not([type="userstyle"]):not([type="userscript"]) #addon-list .addon-view[active="true"]:not([selected]) .date-updated {opacity: .5 !important;}
 	}
 }

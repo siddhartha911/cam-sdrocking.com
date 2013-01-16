@@ -12,7 +12,7 @@
 	</setting>
 
 	<setting pref="extensions.cam.useZeroBorderRadius" type="bool"
-		title="Use 0 (zero) border radius everywhere">
+		title="Use 0 (zero) border radius in Addon Manager">
 		Use this to make scroll animations smoother
 	</setting>
 

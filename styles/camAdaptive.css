@@ -46,7 +46,10 @@
 	@media all and (max-width: 550px) {
 		#list-view .addon-view {padding-right: 1px !important;}
 		#list-view .addon .addon-control {min-width: 4em !important;}
-		#list-view .addon .description-container {opacity: .8 !important;}
+		#list-view .addon .description-container,
+		#list-view .addon .name-container .version {
+		  visibility: collapse !important;
+		}
 	}
 
 	@media all and (max-height: 350px) {
